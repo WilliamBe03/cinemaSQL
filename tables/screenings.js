@@ -1,5 +1,5 @@
 const sqlite3 = require("sqlite3").verbose();
-const db = new sqlite3.Database("data.db");
+const db = new sqlite3.Database("../data.db");
 
 class Screenings {
     constructor(database) {
@@ -8,8 +8,8 @@ class Screenings {
             this.database.run(`
             CREATE TABLE IF NOT EXISTS Screenings(
                 id INTEGER PRIMARY KEY,
-                movieID INTEGER FOREIGN KEY REFERENCES Movies(id),
-                cinemaID INTEGER FOREIGN KEY REFERENCES Cinemas(id),
+                movieID INTEGER,
+                cinemaID INTEGER,
                 screenNo INTEGER,
                 startTime INTEGER
             )`);
@@ -28,3 +28,5 @@ class Screenings {
         });
     }
 }
+
+module.exports = Screenings;
